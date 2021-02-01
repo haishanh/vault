@@ -1,7 +1,7 @@
 {
   "name": "@hsjs/vault",
   "license": "MIT",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "browser": "dist/browser.js",
   "types": "./dist/index.d.ts",
