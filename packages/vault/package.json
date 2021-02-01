@@ -6,7 +6,7 @@
   "browser": "dist/browser.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c rollup.config.js",
+    "prepare": "rollup -c rollup.config.js",
     "test": "jest"
   },
   "files": [
