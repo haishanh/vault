@@ -16,10 +16,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: "https://registry.npmjs.org"
 
-      - run: npm whoami
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -42,6 +38,11 @@ jobs:
         run: yarn build
       - name: Test
         run: yarn test
+
+      - run: npm whoami
+        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # https://docs.github.com/en/free-pro-team@latest/actions/guides/publishing-nodejs-packages
       - name: Publish to npm
